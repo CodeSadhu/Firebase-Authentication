@@ -22,6 +22,14 @@ class Authenticate{
   signIn(AuthCredential authCreds){
     FirebaseAuth.instance.signInWithCredential(authCreds);
   }
+  //for manual otp entry
+  signInViaOTP(smsCode, verId){
+  	AuthCredential authCredential = PhoneAuthProvider.getCredential(
+		  verificationId: verId,
+		  smsCode: smsCode
+	  );
+  	signIn(authCredential);
+  }
   //for signout
   signout(){
     FirebaseAuth.instance.signOut();
